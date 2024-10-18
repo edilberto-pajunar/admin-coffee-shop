@@ -16,6 +16,7 @@ Route::get('/', function () {
     ]);
 });
 
+
 Route::group([
     "middleware" => ["auth:sanctum"],
 ], function() {
@@ -24,7 +25,7 @@ Route::group([
         return Inertia::render('Dashboard', [
             "products" => $products,
         ]);
-    });
+    })->name("dashboard");
 
     Route::get('/orders', [OrderController::class, 'show']);
 });
